@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Copyright 2010 The Apache Software Foundation
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<configuration>
+	<property>
+		<name>hbase.cluster.distributed</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hbase.rootdir</name>
+		<value>hdfs://ns/hbase</value>
+	</property>
+	<property>
+		<name>hbase.tmp.dir</name>
+		<value>/opt/data/hbase</value>
+	</property>
+	<property>
+		<name>hbase.zookeeper.quorum</name>
+		<value>NM-304-SA5212M4-BIGDATA-211:2181,NM-304-SA5212M4-BIGDATA-221:2181,NM-304-SA5212M4-BIGDATA-231:2181,NM-304-SA5212M4-BIGDATA-241:2181,10.142.114.242:2181</value>
+	</property>
+	<property>
+		<name>hbase.hregion.memstore.flush.size</name>
+		<value>268435456</value>
+	</property>
+	<property>
+		<name>hbase.hregion.preclose.flush.size</name>
+		<value>10485760</value>
+	</property>
+	<property>
+		<name>hbase.hstore.blockingStoreFiles</name>
+		<value>2100000000</value>
+	</property>
+	<property>
+		<name>hbase.hregion.max.filesize</name>
+		<value>7516192768</value>
+	</property>
+	<property>
+		<name>hbase.regionserver.optionallogflushinterval</name>
+		<value>10000</value>
+	</property>
+
+	<property>
+		<name>hbase.hregion.majorcompaction</name>
+		<value>0</value>
+	</property>
+
+	<property>
+		<name>hbase.regionserver.handler.count</name>
+		<value>100</value>
+	</property>
+	<property>
+		<name>hbase.master.loadbalance.bytable</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hbase.balancer.period</name>
+		<value>600000</value>
+	</property>
+	<property>
+		<name>hbase.regions.slop</name>
+		<value>0.05</value>
+		<description>Rebalance if any regionserver has average + (average * slop) regions. Default is 20% slop.</description>
+	</property>
+	<property>
+		<name>hbase.master.executor.openregion.threads</name>
+		<value>10</value>
+	</property>
+	<property>
+		<name>hbase.master.executor.closeregion.threads</name>
+		<value>10</value>
+	</property>
+	<property>
+		<name>hbase.regionserver.maxlogs</name>
+		<value>64</value>
+	</property>
+	<property>
+		<name>hbase.regionserver.thread.compaction.small</name>
+		<value>2</value>
+	</property>
+	<property>
+		<name>hbase.regionserver.thread.compaction.large</name>
+		<value>4</value>
+	</property>
+	<property>
+		<name>hbase.regionserver.thread.split</name>
+		<value>4</value>
+	</property>
+	<property>
+		<name>hbase.hstore.compactionThreshold</name>
+		<value>6</value>
+	</property>
+	<property>
+		<name>hbase.hstore.compaction.max</name>
+		<value>15</value>
+	</property>
+
+    <!-- Security -->
+    <property>
+        <name>hbase.superuser</name>
+        <value>hbase,op</value>
+    </property>
+    <property>
+        <name>hbase.security.authentication</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hbase.security.authorization</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hbase.coprocessor.master.classes</name>
+        <value>org.apache.hadoop.hbase.security.access.AccessController</value>
+    </property>
+    <property>
+        <name>hbase.coprocessor.region.classes</name>
+        <value>org.apache.hadoop.hbase.security.token.TokenProvider,org.apache.hadoop.hbase.security.access.AccessController</value>
+    </property>
+
+<!--kerberos-->
+  <property>
+      <name>hbase.regionserver.kerberos.principal</name>
+      <value>hbase/_HOST@HADOOP.CHINATELECOM.CN</value>
+  </property>
+  <property>
+      <name>hbase.regionserver.keytab.file</name>
+      <value>/etc/hbase/conf/hbase.keytab</value>
+  </property>
+  <property>
+      <name>hbase.master.kerberos.principal</name>
+      <value>hbase/_HOST@HADOOP.CHINATELECOM.CN</value>
+  </property>
+  <property>
+      <name>hbase.master.keytab.file</name>
+      <value>/etc/hbase/conf/hbase.keytab</value>
+  </property>
+  <property>
+      <name>hbase.thrift.keytab.file</name>
+      <value>/etc/hbase/conf/hbase.keytab</value>
+  </property>
+  <property>
+      <name>hbase.thrift.kerberos.principal</name>
+      <value>HTTP/_HOST@HADOOP.CHINATELECOM.CN</value>
+  </property>
+  <property>
+      <name>hbase.thrift.security.qop</name>
+      <value>auth</value>
+  </property>
+  <property>
+      <name>hbase.regionserver.thrift.http</name>
+      <value>true</value>
+  </property>
+  <property>
+      <name>hbase.thrift.support.proxyuser</name>
+      <value>true</value>
+  </property>
+
+</configuration>
